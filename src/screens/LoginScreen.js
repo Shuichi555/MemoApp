@@ -6,6 +6,13 @@ class LoginScreen extends React.Component {
       email: '',
       password: '',
   }
+
+  // eslint-disable-nextline
+  handleSubmit() {
+    // this.props.navigation.navigate('Home')
+    // Log in!!
+  }
+
 // <TextInput の　onChangeText= ~ が同様の動作をするため削除
 //  handleChangeText(text) {
 //    this.setState({ email: text });
@@ -34,7 +41,10 @@ class LoginScreen extends React.Component {
           placeholder="Password"
           secureTextEntry
         />
-        <TouchableHighlight style={styles.button} underlayColor="#C70F66" onPress={() => { this.props.navigation.navigate('Home'); }}>
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor="#C70F66"
+          onPress={this.handleSubmit.bind(this)}>
           <Text style={styles.buttonTitle}>
             ログインする
           </Text>
