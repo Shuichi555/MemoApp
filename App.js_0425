@@ -1,0 +1,36 @@
+import React from 'react';
+import { StyleSheet, View, TextInput } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+
+import Appbar from './src/components/Appbar';
+import SignupScreen from './src/screens/SignupScreen';
+import MemoListScreen from './src/screens/MemoListScreen';
+
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Appbar />
+        <SignupScreen />
+      </View>
+    );
+  }
+}
+
+const App = StackNavigator({
+  Home: { screen: MemoListScreen },
+});
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFDF6',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // タイトル分だけスペース確保する
+    paddingTop: 78,
+  },
+});
+
+export default App;
