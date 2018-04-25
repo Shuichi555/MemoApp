@@ -2,14 +2,38 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableHighlight } from 'react-native';
 
 class LoginScreen extends React.Component {
+  state = {
+      email: '',
+      password: '',
+  }
+// <TextInput の　onChangeText= ~ が同様の動作をするため削除
+//  handleChangeText(text) {
+//    this.setState({ email: text });
+//  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
           ログイン
         </Text>
-        <TextInput style={styles.input} value="Email Address" />
-        <TextInput style={styles.input} value="Password" />
+        <TextInput
+          style={styles.input}
+          value={this.state.email}
+          onChangeText={(text) => { this.setState({ email: text }); }}
+          autoCapitalize="none"
+          autoCollect={false}
+          placeholder="Email Address"
+        />
+        <TextInput
+          style={styles.input}
+          value={this.state.password}
+          onChangeText={(text) => { this.setState({ password: text }); }}
+          autoCapitalize="none"
+          autoCollect={false}
+          placeholder="Password"
+          secureTextEntry
+        />
         <TouchableHighlight style={styles.button} underlayColor="#C70F66" onPress={() => { this.props.navigation.navigate('Home'); }}>
           <Text style={styles.buttonTitle}>
             ログインする
