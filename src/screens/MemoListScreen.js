@@ -21,8 +21,9 @@ class MemoListScreen extends React.Component {
       .get()
       .then((snapshot) => {
         const memoList = [];
+  //    memoList.push(doc.data() { key: doc.id }); ↓こんな感じのイメージで実装したい
         snapshot.forEach((doc) => {
-          memoList.push(doc.data());
+          memoList.push({ ...doc.data(), key: doc.id });
         });
 //      this.setState({ memoList: memoList }); ↓下行のように書ける
         this.setState({ memoList });
