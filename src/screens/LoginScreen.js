@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
 import { NavigationActions } from 'react-navigation';
 
@@ -31,6 +31,9 @@ class LoginScreen extends React.Component {
       });
   }
 
+  handlePress() {
+    this.props.navigation.navigate('Signup');
+  }
 // <TextInput の　onChangeText= ~ が同様の動作をするため削除
 //  handleChangeText(text) {
 //    this.setState({ email: text });
@@ -67,6 +70,10 @@ class LoginScreen extends React.Component {
             ログインする
           </Text>
         </TouchableHighlight>
+
+        <TouchableOpacity style={styles.signup} onPress={this.handlePress.bind(this)}>
+          <Text style={styles.signupText}>メンバー登録する</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -104,6 +111,13 @@ const styles = StyleSheet.create({
   buttonTitle: {
     color: '#fff',
     fontSize: 18,
+  },
+  signup: {
+    marginTop: 16,
+    alignSelf: 'center',
+  },
+  signupText: {
+    fontSize: 16,
   },
 });
 export default LoginScreen;
