@@ -14,21 +14,19 @@ class MemoCreateScreen extends React.Component {
     const settings = {timestampsInSnapshots: true};
     db.settings(settings);
 
-    const timestamp = snapshot.get('created_at');
-    const date = timestamp.toDate();
+//    const timestamp = snapshot.get('created_at');
+//    const date = timestamp.toDate();
 
     const { currentUser } = firebase.auth();
 
     // 変数を代入するため　"``"　を使用
-//    db.collection(`users/${params.currentUser.uid}/memos`).add({
       db.collection(`users/${currentUser.uid}/memos`).add({
       body: this.state.body,
-
-//    createdOn: new Date(),
-      createdOn: date,
+      createdOn: new Date(),
+//      createdOn: date,
     })
-        .then((docRef) => {
-          console.log(docRef.id)
+        .then(() => {
+          this.props.navigation.goBack();
       })
         .catch((error) => {
           console.log(error)
