@@ -33,7 +33,6 @@ class MemoEditScreen extends React.Component {
           key: this.state.key,
 //        createdOn: newDate,
       });
-//        navigation.navigate('Home', { ...memo,returnMemo: this.returnMemo.bind(this) });
         navigation.goBack();
       })
       .catch((error) => {
