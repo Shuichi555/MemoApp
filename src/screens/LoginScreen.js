@@ -52,6 +52,7 @@ class LoginScreen extends React.Component {
           autoCapitalize="none"
           autoCollect={false}
           placeholder="Email Address"
+          underlineColorAndroid="transparent"
         />
         <TextInput
           style={styles.input}

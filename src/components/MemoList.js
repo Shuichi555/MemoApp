@@ -1,14 +1,29 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight, FlatList } from 'react-native';
 
+import Timestamp from 'react-timestamp';
+import Moment from 'react-moment';
+import 'moment-timezone';
+
 class MemoList extends React.Component {
   renderMemo({ item }) {
     console.log(item);
+
+/*    const timestamp = item.createdOn.seconds;
+    console.log(timestamp);
+
+    const moment = new Moment(timestamp);
+    console.log(moment);
+*/
+//    const date = moment.unix(timestamp);
+//    console.log(date);
+
+
     return (
         <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail', { memo: item }); }}>
         <View style={styles.memoListItem}>
           <Text style={styles.memoTitle}>{item.body.substring(0, 15)}</Text>
-          <Text style={styles.memoDate}>2018/04/18</Text>
+          <Text style={styles.memoDate}>2018/04/29</Text>
         </View>
         </TouchableHighlight>
     );
