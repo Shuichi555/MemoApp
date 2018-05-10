@@ -43,7 +43,11 @@ class MemoCreateScreen extends React.Component {
           value={this.state.body}
           onChangeText={(text) => { this.setState({ body: text }); }}
           underlineColorAndroid="transparent"
-          textAlignVertical="top"          
+          textAlignVertical="top"
+
+          keyboardDismissMode="interactive"
+          keyboardShouldPersistTaps="never"
+          enablesReturnKeyAutomatically={true}
         />
         <CircleButton onPress={this.handlePress.bind(this)}>
           {'\uf00c'}

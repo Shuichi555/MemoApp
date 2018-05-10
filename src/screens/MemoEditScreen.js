@@ -50,6 +50,10 @@ class MemoEditScreen extends React.Component {
           onChangeText={(text) => { this.setState({ body: text }); }}
           underlineColorAndroid="transparent"
           textAlignVertical="top"
+
+          keyboardDismissMode="interactive"
+          keyboardShouldPersistTaps="never"
+          enablesReturnKeyAutomatically={true}
         />
         <CircleButton onPress={ this.handlePress.bind(this) }>
           {'\uf00c'}
@@ -64,6 +68,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
+    height: 50,
+
   },
   memoEditInput: {
     backgroundColor: '#fff',
