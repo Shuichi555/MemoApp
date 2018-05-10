@@ -9,9 +9,18 @@ class MemoList extends React.Component {
   renderMemo({ item }) {
     console.log(item);
 
-/*    const timestamp = item.createdOn.seconds;
-    console.log(timestamp);
+    const timestamp = item.createdOn.seconds;
+    const memoCreateDate = Date(timestamp);
 
+
+//    console.log(timestamp.toString(), "timestamp");
+//    console.log(memoCreateDate.toString(), "memoCreateDate");
+
+//    const memoCreateDateString = Moment(memoCreateDate).toString();
+//    const memoCreateDateStringJP = memoCreateDateString.format('YYYY年MM月DD日 HH:mm');
+
+
+/*
     const moment = new Moment(timestamp);
     console.log(moment);
 */
@@ -23,7 +32,7 @@ class MemoList extends React.Component {
         <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail', { memo: item }); }}>
         <View style={styles.memoListItem}>
           <Text style={styles.memoTitle}>{item.body.substring(0, 15)}</Text>
-          <Text style={styles.memoDate}>2018/04/29</Text>
+          <Text style={styles.memoDate}>{memoCreateDate.toString()}</Text>
         </View>
         </TouchableHighlight>
     );

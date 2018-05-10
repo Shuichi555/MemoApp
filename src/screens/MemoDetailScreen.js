@@ -5,11 +5,12 @@ import Moment from 'moment';
 
 import CircleButton from '../elements/CircleButton';
 
+
+
 //moment().format("YYYY-MM-DD HH:mm:SS")  // 2018-01-30 10:58:05
 //  const dateString = moment().format("YYYY-MM-DD HH:mm:SS");
 
-
-const timeStamp = new Date().getTime();
+//const timeStamp = new Date().getTime();
 //  moment(timestamp)
 
 //const dateString = (date) => {
@@ -38,13 +39,16 @@ class MemoDetailScreen extends React.Component {
 
   render() {
     const { memo } = this.state;
+    const timestamp = memo.createdOn.seconds;
+    const memoCreateDate = Date(timestamp);
+
     return (
       <View style={styles.container}>
         <View>
           <View style={styles.memoHeader}>
             <View>
               <Text style={styles.memoHeaderTitle}>{memo.body.substring(0, 15)}</Text>
-              <Text style={styles.memoHeaderDate}>2018/04/29</Text>
+              <Text style={styles.memoHeaderDate}>{memoCreateDate.toString()}</Text>
             </View>
           </View>
         </View>
