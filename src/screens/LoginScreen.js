@@ -1,13 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity, Image, Platform } from 'react-native';
 import firebase from 'firebase';
 import { NavigationActions } from 'react-navigation';
+import { Container, Drawer, Header, Left, Right, Title, Body, Button, Icon } from 'native-base';
+import CircleButton from '../elements/CircleButton';
 
 class LoginScreen extends React.Component {
+
   state = {
-      email: 'user1@example.com',
-      password: 'password',
-  }
+    email: 'user1@example.com',
+    password: 'password'
+  };
 
   // eslint-disable-nextline
   handleSubmit() {
@@ -31,17 +34,19 @@ class LoginScreen extends React.Component {
       });
   }
 
+  //Drawerのためにボタン追加
   handlePress() {
-    this.props.navigation.navigate('Signup');
+  //  const { params } = this.props.navigation.state;
+  //  this.props.navigation.navigate('MemoCreate', { currentUser: params.currentUser });
+    this.props.navigation.navigate('TestMenu');
   }
-// <TextInput の　onChangeText= ~ が同様の動作をするため削除
-//  handleChangeText(text) {
-//    this.setState({ email: text });
-//  }
 
   render() {
     return (
       <View style={styles.container}>
+        <CircleButton onPress={this.handlePress.bind(this)}>
+          {'\uf067'}
+        </ CircleButton>
         <Text style={styles.title}>
           ログイン
         </Text>
@@ -72,9 +77,14 @@ class LoginScreen extends React.Component {
           </Text>
         </TouchableHighlight>
 
-        <TouchableOpacity style={styles.signup} onPress={this.handlePress.bind(this)}>
+        <TouchableOpacity style={styles.signup} onPress={() => this.props.navigation.navigate('Signup', {})}>
           <Text style={styles.signupText}>メンバー登録する</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity style={styles.signup} onPress={() => this.props.navigation.navigate('TestMenu', {})}>
+          <Text style={styles.signupText}>GoTo TestMenu</Text>
+        </TouchableOpacity>
+
       </View>
     );
   }

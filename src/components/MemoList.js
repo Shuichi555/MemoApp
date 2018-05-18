@@ -1,45 +1,57 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight, FlatList } from 'react-native';
+// import { StyleSheet, View, Text, TouchableHighlight, FlatList } from 'react-native';
+import { StyleSheet, TouchableHighlight, FlatList } from 'react-native';
+import { Container, Header, Content, SwipeRow, View, Button, Icon, List, ListItem, Text } from 'native-base';
 
 import Timestamp from 'react-timestamp';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
+import Swipeable from 'react-native-swipeable';
+
 class MemoList extends React.Component {
   renderMemo({ item }) {
-    console.log(item);
+//  console.log(item);
 
     const timestamp = item.createdOn.seconds;
     const memoCreateDate = Date(timestamp);
 
 
-//    console.log(timestamp.toString(), "timestamp");
-//    console.log(memoCreateDate.toString(), "memoCreateDate");
 
-//    const memoCreateDateString = Moment(memoCreateDate).toString();
-//    const memoCreateDateStringJP = memoCreateDateString.format('YYYY年MM月DD日 HH:mm');
+/* return ORIGINAL 20180515
+return (
+    <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail', { memo: item }); }}>
+    <View style={styles.memoListItem}>
+      <Text style={styles.memoTitle}>{item.body.substring(0, 15)}</Text>
+      <Text style={styles.memoDate}>{memoCreateDate.toString()}</Text>
+    </View>
+    </TouchableHighlight>
+);
 
-
-/*
-    const moment = new Moment(timestamp);
-    console.log(moment);
 */
-//    const date = moment.unix(timestamp);
-//    console.log(date);
-
 
     return (
-        <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail', { memo: item }); }}>
-        <View style={styles.memoListItem}>
-          <Text style={styles.memoTitle}>{item.body.substring(0, 15)}</Text>
-          <Text style={styles.memoDate}>{memoCreateDate.toString()}</Text>
-        </View>
-        </TouchableHighlight>
+          <SwipeRow
+          leftOpenValue={0}
+          rightOpenValue={-75}
+            body={
+              <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail', { memo: item }); }}>
+                <View style={styles.memoListItem}>
+                  <Text style={styles.memoTitle}>{item.body.substring(0, 15)}</Text>
+                  <Text style={styles.memoDate}>{memoCreateDate.toString()}</Text>
+                </View>
+              </TouchableHighlight>
+            }
+            right={
+              <Button danger onPress={() => alert('Trash')}>
+                <Icon active name="trash" />
+              </Button>
+            }
+          />
     );
   }
 
   render() {
-
     return (
       <View style={styles.memoList}>
         <FlatList data={this.props.memoList} renderItem={this.renderMemo.bind(this)} />
@@ -56,8 +68,6 @@ const styles = StyleSheet.create({
   },
   memoListItem: {
     padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
     backgroundColor: '#fff',
   },
   memoTitle: {
@@ -68,6 +78,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#a2a2a2',
   },
+
 });
 
 export default MemoList;

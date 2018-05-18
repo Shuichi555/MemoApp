@@ -39,8 +39,14 @@ class MemoDetailScreen extends React.Component {
 
   render() {
     const { memo } = this.state;
+
+    /*
     const timestamp = memo.createdOn.seconds;
     const memoCreateDate = Date(timestamp);
+
+    <Text style={styles.memoHeaderDate}>{memoCreateDate.toString()}</Text>
+    */
+
 
     return (
       <View style={styles.container}>
@@ -48,7 +54,6 @@ class MemoDetailScreen extends React.Component {
           <View style={styles.memoHeader}>
             <View>
               <Text style={styles.memoHeaderTitle}>{memo.body.substring(0, 15)}</Text>
-              <Text style={styles.memoHeaderDate}>{memoCreateDate.toString()}</Text>
             </View>
           </View>
         </View>
