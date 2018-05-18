@@ -30,9 +30,7 @@ export default class AppSidebar extends React.Component {
     return (
       <View style={styles.container}>
           <Image
-            source={{
-              uri: 'https://github.com/GeekyAnts/NativeBase-KitchenSink/raw/react-navigation/img/drawer-cover.png'
-            }}
+            source ={ require ('../../assets/drawer-cover.png')}
             style={{
               height: 120,
               alignSelf: "stretch",
@@ -40,11 +38,9 @@ export default class AppSidebar extends React.Component {
               alignItems: "center"
             }} />
             <Image
+              source ={ require ('../../assets/logo-kitchen-sink.png')}
               square
               style={{ height: 80, width: 70 }}
-              source={{
-                uri: 'https://github.com/GeekyAnts/NativeBase-KitchenSink/raw/react-navigation/img/logo.png'
-              }}
             />
       </View>
     );
@@ -53,7 +49,7 @@ export default class AppSidebar extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '75%',
-    backgroundColor: '#FFFDF6',
+//    width: '75%',
+//    backgroundColor: '#FFFDF6',
   },
 });

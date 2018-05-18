@@ -14,8 +14,8 @@ import TestScreen2 from './src/screens/TestScreen2';
 import ShareTestScreen from './src/screens/ShareTestScreen';
 //import DrawerNativeBase from './src/screens/DrawerNativeBaseScreen';
 
+import AppSidebar from './src/components/AppSidebar';
 
-//import AppSidebar from './src/components/AppSidebar';
 import AppDrawer from './src/components/AppDrawer';
 import CommonHeader from './src/components/CommonHeader';
 
@@ -47,6 +47,7 @@ const App = StackNavigator({
   Test1:            { screen: TestScreen1 },
   Test2:            { screen: TestScreen2 },
   ShareTest:        { screen: ShareTestScreen },
+  AppSidebar:       { screen: AppSidebar },
 //  DrawerNativeBase: { screen: DrawerNativeBaseScreen },
 }, {
   navigationOptions: {

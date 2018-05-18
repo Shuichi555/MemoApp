@@ -3,7 +3,9 @@ import { StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity
 import firebase from 'firebase';
 import { NavigationActions } from 'react-navigation';
 import { Container, Drawer, Header, Left, Right, Title, Body, Button, Icon } from 'native-base';
+
 import CircleButton from '../elements/CircleButton';
+import AppSidebar from '../components/AppSidebar';
 
 class LoginScreen extends React.Component {
 
@@ -38,12 +40,34 @@ class LoginScreen extends React.Component {
   handlePress() {
   //  const { params } = this.props.navigation.state;
   //  this.props.navigation.navigate('MemoCreate', { currentUser: params.currentUser });
-    this.props.navigation.navigate('TestMenu');
+//    this.props.navigation.navigate('AppSidebar');
+    this.drawer._root.open()
   }
 
   render() {
+// drawer
+//    Drawer = this.drawer;
+
+    closeDrawer = () => {
+//      Drawer._root.close()
+      this.drawer._root.close()
+    };
+    openDrawer = () => {
+//      Drawer._root.open()
+      this.drawer._root.open()
+    };
+
+// Drawer last
+//    onClose={() => this.closeDrawer()} >
+
+
     return (
-      <View style={styles.container}>
+        <View style={styles.container}>
+        <Drawer
+          ref={(ref) => { this.drawer = ref; }}
+          content={<AppSidebar navigator={this.navigator} />}
+          onClose={() => this.drawer._root.close()} >
+        </Drawer>
         <CircleButton onPress={this.handlePress.bind(this)}>
           {'\uf067'}
         </ CircleButton>
