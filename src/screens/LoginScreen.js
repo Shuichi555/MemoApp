@@ -45,6 +45,7 @@ class LoginScreen extends React.Component {
   }
 
   render() {
+/* disable AppSidebar
 // drawer
 //    Drawer = this.drawer;
 
@@ -60,17 +61,19 @@ class LoginScreen extends React.Component {
 // Drawer last
 //    onClose={() => this.closeDrawer()} >
 
+<Drawer
+  ref={(ref) => { this.drawer = ref; }}
+  content={<AppSidebar navigator={this.navigator} />}
+  onClose={() => this.drawer._root.close()} >
+</Drawer>
+<CircleButton onPress={this.handlePress.bind(this)}>
+  {'\uf067'}
+</ CircleButton>
+
+*/
 
     return (
         <View style={styles.container}>
-        <Drawer
-          ref={(ref) => { this.drawer = ref; }}
-          content={<AppSidebar navigator={this.navigator} />}
-          onClose={() => this.drawer._root.close()} >
-        </Drawer>
-        <CircleButton onPress={this.handlePress.bind(this)}>
-          {'\uf067'}
-        </ CircleButton>
         <Text style={styles.title}>
           ログイン
         </Text>
